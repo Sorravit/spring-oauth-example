@@ -1,0 +1,6 @@
+FROM openjdk:11.0-jre-slim-sid
+
+USER root
+ADD /build/libs .
+ADD /src/main/resources/application.properties  /src/main/resources/application.properties
+CMD ["java", "-server", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseG1GC", "-XX:MaxGCPauseMillis=100", "-XX:+UseStringDeduplication", "-jar", "oauth-1.0-SNAPSHOT.jar"]
