@@ -1,0 +1,9 @@
+
+### BIG template
+.idea/
+.gradle/
+build/
+gradle/
+out/
+.idea_modules/
+
