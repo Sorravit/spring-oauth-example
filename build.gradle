@@ -64,3 +64,18 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
     main = "com.github.shyiko.ktlint.Main"
     args "-F", "src/**/*.kt"
 }
+
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'lambda',
+                'Implementation-Version': version
+    }
+    from {
+        (configurations.runtime).collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+
+    duplicatesStrategy DuplicatesStrategy.EXCLUDE
+}
